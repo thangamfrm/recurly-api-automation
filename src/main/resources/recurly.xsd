@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="accounts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="account"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="adjustments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="adjustment"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="coupons">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="coupon"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="subscriptions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="subscription"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="invoices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="invoice"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="transactions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="transaction"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="plans">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="plan"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="redemptions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="redemption"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="add_ons">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="add_on"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="subscription_add_ons">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="subscription_add_on"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="line_items">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="adjustment"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="plan_codes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="plan_code"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="notes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="note"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="details">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="1" ref="account"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="account">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="adjustments"/>
+            	<xs:element ref="billing_info"/>
+            	<xs:element ref="invoices"/>
+            	<xs:element ref="redemption"/>
+            	<xs:element ref="subscriptions"/>
+            	<xs:element ref="transactions"/>
+            	<xs:element ref="account_code"/>
+            	<xs:element ref="state"/>
+            	<xs:element ref="username"/>
+            	<xs:element ref="email"/>
+            	<xs:element ref="first_name"/>
+            	<xs:element ref="last_name"/>
+            	<xs:element ref="accept_language"/>
+            	<xs:element ref="hosted_login_token"/>
+            	<xs:element ref="created_at"/>
+            	<xs:element ref="address"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+    	</xs:complexType>
+	</xs:element>
+
+	<!-- account -->
+	<xs:element name="account_code" type="xs:string"/>
+	<xs:element name="username" nillable="true" type="xs:string"/>
+	<xs:element name="email" type="xs:string"/>
+	<xs:element name="accept_language" nillable="true" type="xs:string"/>
+	<xs:element name="hosted_login_token" type="xs:string"/>
+	<xs:element name="created_at" type="xs:dateTime"/>
+
+    <xs:element name="adjustment">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="account"/>
+				<xs:element ref="invoice"/>
+				<xs:element ref="subscription"/>
+				<xs:element ref="uuid"/>
+				<xs:element ref="description"/>
+				<xs:element ref="accounting_code"/>
+				<xs:element ref="origin"/>
+				<xs:element ref="unit_amount_in_cents"/>
+				<xs:element ref="quantity"/>
+				<xs:element ref="discount_in_cents"/>
+				<xs:element ref="tax_in_cents"/>
+				<xs:element ref="total_in_cents"/>
+				<xs:element ref="currency"/>
+				<xs:element ref="taxable"/>
+				<xs:element ref="product_code"/>
+				<xs:element ref="start_date"/>
+				<xs:element ref="end_date"/>
+				<xs:element ref="created_at"/>
+			</xs:sequence>
+			<xs:attribute name="type" use="required" type="xs:string"/>
+			<xs:attribute name="href" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- adjustment -->
+	<xs:element name="discount_in_cents" type="xs:integer"/>
+	<xs:element name="tax_in_cents" type="xs:integer"/>
+	<xs:element name="total_in_cents" type="xs:integer"/>
+	<xs:element name="taxable" type="xs:boolean"/>
+	<xs:element name="product_code" type="xs:string"/>
+	<xs:element name="start_date" type="xs:dateTime"/>
+	<xs:element name="end_date" type="xs:dateTime"/>
+
+    <xs:element name="billing_info">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="account"/>
+				<xs:element ref="first_name"/>
+				<xs:element ref="last_name"/>
+				<xs:element ref="company"/>
+				<xs:element ref="address1"/>
+				<xs:element ref="address2"/>
+				<xs:element ref="city"/>
+				<xs:element ref="state"/>
+				<xs:element ref="zip"/>
+				<xs:element ref="country"/>
+				<xs:element ref="phone"/>
+				<xs:element ref="vat_number"/>
+				<xs:element ref="ip_address"/>
+				<xs:element ref="ip_address_country"/>
+				<xs:element ref="card_type"/>
+				<xs:element ref="year"/>
+				<xs:element ref="month"/>
+				<xs:element ref="first_six"/>
+				<xs:element ref="last_four"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+            <xs:attribute name="type" use="required" type="xs:string"/>
+        </xs:complexType>
+	</xs:element>
+
+    <xs:element name="add_on">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="plan"/>
+				<xs:element ref="add_on_code"/>
+				<xs:element ref="name"/>
+				<xs:element ref="display_quantity_on_hosted_page"/>
+				<xs:element ref="default_quantity"/>
+				<xs:element ref="unit_amount_in_cents"/>
+				<xs:element ref="created_at"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	
+	<!-- add_on -->
+	<xs:element name="add_on_code" type="xs:string"/>
+	<xs:element name="display_quantity_on_hosted_page" type="xs:boolean"/>
+	<xs:element name="default_quantity" type="xs:integer"/>
+	
+    <xs:element name="coupon">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="redemptions"/>
+            	<xs:element ref="coupon_code"/>
+            	<xs:element ref="name"/>
+            	<xs:element ref="state"/>
+            	<xs:element ref="discount_type"/>
+            	<xs:element ref="discount_percent"/>
+            	<xs:element ref="redeem_by_date"/>
+            	<xs:element ref="single_use"/>
+            	<xs:element ref="applies_for_months"/>
+            	<xs:element ref="max_redemptions"/>
+            	<xs:element ref="applies_to_all_plans"/>
+            	<xs:element ref="created_at"/>
+            	<xs:element ref="plan_codes"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+    	</xs:complexType>
+	</xs:element>
+
+	<!-- coupon -->
+	<xs:element name="coupon_code" type="xs:string"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="discount_type" type="xs:string"/>
+	<xs:element name="discount_percent" type="xs:integer"/>
+	<xs:element name="redeem_by_date" type="xs:dateTime"/>
+	<xs:element name="single_use" type="xs:boolean"/>
+	<xs:element name="applies_for_months" nillable="true" type="xs:string"/>
+	<xs:element name="max_redemptions" type="xs:integer"/>
+	<xs:element name="applies_to_all_plans" type="xs:boolean"/>
+
+    <xs:element name="subscription">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="uuid"/>
+				<xs:element ref="state"/>
+				<xs:element ref="unit_amount_in_cents"/>
+				<xs:element ref="currency"/>
+				<xs:element ref="quantity"/>
+				<xs:element ref="activated_at"/>
+				<xs:element ref="canceled_at"/>
+				<xs:element ref="expires_at"/>
+				<xs:element ref="current_period_started_at"/>
+				<xs:element ref="current_period_ends_at"/>
+				<xs:element ref="trial_started_at"/>
+				<xs:element ref="trial_ends_at"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+        </xs:complexType>
+	</xs:element>
+
+    <xs:element name="invoice">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="account"/>
+            	<xs:element ref="subscription"/>
+            	<xs:element ref="uuid"/>
+            	<xs:element ref="state"/>
+            	<xs:element ref="invoice_number"/>
+            	<xs:element ref="po_number"/>
+            	<xs:element ref="vat_number"/>
+            	<xs:element ref="subtotal_in_cents"/>
+            	<xs:element ref="tax_in_cents"/>
+            	<xs:element ref="total_in_cents"/>
+            	<xs:element ref="currency"/>
+            	<xs:element ref="created_at"/>
+            	<xs:element ref="closed_at"/>
+            	<xs:element ref="line_items"/>
+            	<xs:element ref="transactions"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+    	</xs:complexType>
+	</xs:element>
+
+	<!-- invoice -->
+	<xs:element name="invoice_number" type="xs:integer"/>
+	<xs:element name="po_number" nillable="true" type="xs:string"/>
+	<xs:element name="subtotal_in_cents" type="xs:integer"/>
+	<xs:element name="closed_at" nillable="true" type="xs:dateTime"/>
+
+    <xs:element name="transaction">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="account"/>
+				<xs:element ref="invoice"/>
+				<xs:element ref="subscription"/>
+				<xs:element ref="uuid"/>
+				<xs:element ref="action"/>
+				<xs:element ref="amount_in_cents"/>
+				<xs:element ref="tax_in_cents"/>
+				<xs:element ref="currency"/>
+				<xs:element ref="status"/>
+				<xs:element ref="payment_method"/>
+				<xs:element ref="reference"/>
+				<xs:element ref="source"/>
+				<xs:element ref="recurring"/>
+				<xs:element ref="test"/>
+				<xs:element ref="voidable"/>
+				<xs:element ref="refundable"/>
+				<xs:element ref="cvv_result"/>
+				<xs:element ref="avs_result"/>
+				<xs:element ref="avs_result_street"/>
+				<xs:element ref="avs_result_postal"/>
+				<xs:element ref="created_at"/>
+				<!-- <xs:element ref="details"/> -->
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+    	</xs:complexType>
+	</xs:element>
+
+	<!-- transaction -->
+	<xs:element name="action" type="xs:string"/>
+	<xs:element name="amount_in_cents" type="xs:integer"/>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="payment_method" type="xs:string"/>
+	<xs:element name="reference" nillable="true"  type="xs:string"/>
+	<xs:element name="source" type="xs:string"/>
+	<xs:element name="recurring" type="xs:boolean"/>
+	<xs:element name="test" type="xs:boolean"/>
+	<xs:element name="voidable" type="xs:boolean"/>
+	<xs:element name="refundable" type="xs:boolean"/>
+	<xs:element name="cvv_result" nillable="true" type="code_attr_element"/>
+	<xs:element name="avs_result" nillable="true" type="code_attr_element"/>
+	<xs:element name="avs_result_street" nillable="true" type="xs:string"/>
+	<xs:element name="avs_result_postal" nillable="true" type="xs:string"/>
+
+	<xs:complexType name="code_attr_element">
+	    <xs:simpleContent>
+	      <xs:extension base="xs:string">
+	        <xs:attribute name="code" type="xs:string">
+	        </xs:attribute>
+	      </xs:extension>
+	    </xs:simpleContent>
+	</xs:complexType>
+
+    <xs:element name="plan">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="add_ons"/>
+            	<xs:element ref="plan_code"/>
+            	<xs:element ref="name"/>
+            	<xs:element ref="description"/>
+            	<xs:element ref="success_url"/>
+            	<xs:element ref="cancel_url"/>
+            	<xs:element ref="display_donation_amounts"/>
+            	<xs:element ref="display_quantity"/>
+            	<xs:element ref="display_phone_number"/>
+            	<xs:element ref="bypass_hosted_confirmation"/>
+            	<xs:element ref="unit_name"/>
+            	<xs:element ref="payment_page_tos_link"/>
+            	<xs:element ref="plan_interval_length"/>
+            	<xs:element ref="plan_interval_unit"/>
+            	<xs:element ref="trail_interval_length"/>
+            	<xs:element ref="trial_interval_unit"/>
+            	<xs:element ref="accounting_code"/>
+            	<xs:element ref="created_at"/>
+            	<xs:element ref="unit_amount_in_cents"/>
+            	<xs:element ref="setup_fee_in_cents"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:NCName"/>
+    	</xs:complexType>
+	</xs:element>
+
+    <xs:element name="unit_amount_in_cents">
+        <xs:complexType>
+            <xs:sequence>
+    			<xs:element name="USD" type="xs:integer"/>
+    			<xs:element name="EUR" type="xs:integer"/>
+            </xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+
+    <xs:element name="setup_fee_in_cents">
+        <xs:complexType>
+            <xs:sequence>
+    			<xs:element name="USD" type="xs:integer"/>
+    			<xs:element name="EUR" type="xs:integer"/>
+            </xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+
+	<!-- plan -->
+	<xs:element name="success_url" nillable="true" type="xs:string"/>
+	<xs:element name="cancel_url" nillable="true" type="xs:string"/>
+	<xs:element name="display_donation_amounts" type="xs:boolean"/>
+	<xs:element name="display_quantity" type="xs:boolean"/>
+	<xs:element name="display_phone_number" type="xs:boolean"/>
+	<xs:element name="bypass_hosted_confirmation" type="xs:boolean"/>
+	<xs:element name="unit_name" type="xs:string"/>
+	<xs:element name="payment_page_tos_link" nillable="true" type="xs:string"/>
+	<xs:element name="plan_interval_length" type="xs:integer"/>
+	<xs:element name="plan_interval_unit" type="xs:string"/>
+	<xs:element name="trail_interval_length" type="xs:integer"/>
+	<xs:element name="trial_interval_unit" type="xs:string"/>
+
+    <xs:element name="redemption">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="coupon"/>
+            	<xs:element ref="account"/>
+            	<xs:element ref="single_use"/>
+            	<xs:element ref="total_discounted_in_cents"/>
+            	<xs:element ref="currency"/>
+            	<xs:element ref="created_at"/>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" type="xs:string"/>
+    	</xs:complexType>
+	</xs:element>
+
+	<!-- redemption -->
+	<xs:element name="total_discounted_in_cents" type="xs:integer"/>
+
+    <xs:element name="address">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="address1"/>
+            	<xs:element ref="address2"/>
+            	<xs:element ref="city"/>
+            	<xs:element ref="state"/>
+            	<xs:element ref="zip"/>
+            	<xs:element ref="country"/>
+            	<xs:element ref="phone"/>
+            </xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+
+    <xs:element name="note">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="account"/>
+				<xs:element ref="message"/>
+				<xs:element ref="created_at"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+
+    <xs:element name="subscription_add_on">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="add_on_code"/>
+				<xs:element ref="quantity"/>
+				<xs:element ref="unit_amount_in_cents"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+
+	<!-- note -->
+	<xs:element name="message" type="xs:string"/>
+
+	<!-- adjustment -->
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="accounting_code" nillable="true" type="xs:string"/>
+	<xs:element name="origin" type="xs:string"/>
+
+	<!-- billing info -->
+	<xs:element name="first_name" type="xs:string"/>
+	<xs:element name="last_name" type="xs:string"/>
+	<xs:element name="company" nillable="true" type="xs:string"/>
+	<xs:element name="address1" type="xs:string"/>
+	<xs:element name="address2" nillable="true" type="xs:string"/>
+	<xs:element name="city" type="xs:string"/>
+	<xs:element name="state" type="xs:string"/>
+	<xs:element name="zip" type="xs:string"/>
+	<xs:element name="country" type="xs:string"/>
+	<xs:element name="phone" nillable="true" type="xs:string"/>
+	<xs:element name="vat_number" type="xs:string"/>
+	<xs:element name="ip_address" type="xs:string"/>
+	<xs:element name="ip_address_country" type="xs:string"/>
+	<xs:element name="card_type" type="xs:string"/>
+	<xs:element name="year" type="xs:integer"/>
+	<xs:element name="month" type="xs:integer"/>
+	<xs:element name="first_six" type="xs:string"/>
+	<xs:element name="last_four" type="xs:string"/>
+
+	<!-- subscription -->
+	<xs:element name="uuid" type="xs:string"/>
+	<xs:element name="currency" type="xs:string"/>
+	<xs:element name="quantity" type="xs:integer"/>
+	<xs:element name="activated_at" type="xs:dateTime"/>
+	<xs:element name="canceled_at" type="xs:dateTime"/>
+	<xs:element name="expires_at" type="xs:dateTime"/>
+	<xs:element name="current_period_started_at" type="xs:dateTime"/>
+	<xs:element name="current_period_ends_at" type="xs:dateTime"/>
+	<xs:element name="trial_started_at" type="xs:dateTime"/>
+	<xs:element name="trial_ends_at" type="xs:dateTime"/>
+
+	<!-- plan_codes -->
+	<xs:element name="plan_code" type="xs:string"/>
+
+</xs:schema>
